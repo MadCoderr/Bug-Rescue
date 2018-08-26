@@ -15,7 +15,7 @@ public class RayInput : MonoBehaviour {
     private IBridgeController _bridgeController;
     private ITrampolineController _trampolineController;
 
-    private string _colliderTag;
+    private string _colliderTag = "";
 
 	void Start () {
         _bridgeController = GameObject.Find("Example_Bridge").GetComponent<IBridgeController>();

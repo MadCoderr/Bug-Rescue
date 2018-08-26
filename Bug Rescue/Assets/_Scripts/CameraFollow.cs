@@ -18,11 +18,9 @@ public class CameraFollow : MonoBehaviour {
 		OffSet = new Vector3 (0, 4, 10);
 	}
 	
-	// Update is called once per frame
 	void LateUpdate ()
 	{
-      //  transform.position = FollowTarget.position + OffSet;
-		transform.position = Vector3.Lerp (transform.position, FollowTarget.position + OffSet, CamSpeed);  //just to smooth.
-		//transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fracJourney);
+        // will follow the player postion smoothly.
+		transform.position = Vector3.Lerp (transform.position, FollowTarget.position + OffSet, CamSpeed); 
 	}
 }

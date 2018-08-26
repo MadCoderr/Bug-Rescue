@@ -45,4 +45,14 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     public void MoveUp() {
         _rbPlayer.AddForce(0, jumpHeight, 0, ForceMode.Impulse);
     }
+
+    public void playerHealth()
+    {
+        destroyPlayer();
+    }
+
+    private void destroyPlayer() {
+        Camera.main.GetComponent<CameraFollow>().enabled = false; // just to make sure to disable this script so unity will not thrown any exception
+        Destroy(this.gameObject);
+    }
 }

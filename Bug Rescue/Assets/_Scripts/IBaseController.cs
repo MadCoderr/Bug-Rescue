@@ -1,5 +1,6 @@
 ﻿public interface IPlayerController {
     void MoveUp();
+    void playerHealth();
 }
 
 public interface IBridgeController {
