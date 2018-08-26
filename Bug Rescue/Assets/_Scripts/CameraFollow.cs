@@ -8,8 +8,9 @@ public class CameraFollow : MonoBehaviour {
 	private Transform FollowTarget;
 
 	[SerializeField]
-	private float camSpeed;
+	private float CamSpeed = 0.5f;
 
+    [SerializeField]
     private Vector3 OffSet;
 
 	void Start()
@@ -21,7 +22,7 @@ public class CameraFollow : MonoBehaviour {
 	void LateUpdate ()
 	{
       //  transform.position = FollowTarget.position + OffSet;
-		transform.position = Vector3.Lerp (transform.position, FollowTarget.position+new Vector3(0,4,10),camSpeed);  //just to smooth.
+		transform.position = Vector3.Lerp (transform.position, FollowTarget.position + OffSet, CamSpeed);  //just to smooth.
 		//transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fracJourney);
 	}
 }

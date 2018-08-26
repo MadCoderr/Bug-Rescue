@@ -7,13 +7,17 @@ public class PlayerBehaviour : MonoBehaviour {
     [SerializeField]
     private float Speed = 3f;
 
+//	public ExampleBridge refer;
+
+    private IBridgeController _bridgeContorller;
     private Rigidbody _rbPlayer;
 
-	public ExampleBridge refer;
+    private float _maxTime = 2f;
+    private float _time;
 
-	void Start () {
+    void Start () {
         _rbPlayer = GetComponent<Rigidbody>();
-
+        _bridgeContorller = GameObject.Find("Example_Bridge").GetComponent<IBridgeController>();
 	}
 	
 	void Update () {
@@ -28,12 +32,22 @@ public class PlayerBehaviour : MonoBehaviour {
     // A funciton to define movement for player 
     private void playerMovement() {
         var horizontal = Input.GetAxis("Horizontal"); // gettting x-axis
+       
         // this will let the player to move on x-axis
         _rbPlayer.velocity = new Vector3(-horizontal * Speed, _rbPlayer.velocity.y, 0);
+       
+        // When user gives input of space We activate its script component to open the gate; (By default the gate is closed)
+		if (Input.GetKey(KeyCode.Space)) {
+            //	refer.GetComponent<ExampleBridge> ().enabled = true;  
+            _time += Time.deltaTime;
+            print("time: " + _time);
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			refer.GetComponent<ExampleBridge> ().enabled = true;  // When user gives input of space We activate its script component to open the gate;(By default the gate is closed)
-		}
+            if (_time >= _maxTime)
+                _bridgeContorller.openBridge(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Space)) {
+            _time = 0;
+        }
     }
 
 }
