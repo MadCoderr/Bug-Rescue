@@ -13,7 +13,7 @@ public class ExampleBridge : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//OpenGate ();
-		transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.identity,0.01f);
+		transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.identity,0.01f);  //Code to open thwe bridge.
 	}
 }
 
