@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour {
+public class EnemyBehaviour : MonoBehaviour, IEnemyController {
 
     [SerializeField]
     private float Speed = 3f;
@@ -18,7 +18,6 @@ public class EnemyBehaviour : MonoBehaviour {
 
     private bool _isMovingRight = true;
     private IPlayerController _playerController;
-    private RaycastHit _hit;
 
 	void Update () {
         enemyPatrol();
@@ -31,7 +30,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
         // if the ray cast that is emitting from GroundDectation object does not hit the ground(cube)
         // the player would rotate in opposite directoin
-        if (!Physics.Raycast(GroundDectation.position, Vector3.down, out _hit, Distance, GroundMask)) {
+        if (!Physics.Raycast(GroundDectation.position, Vector3.down, Distance, GroundMask)) {
             if (_isMovingRight) {
                 transform.eulerAngles = new Vector3(0, -180f, 0);
                 _isMovingRight = false;
@@ -54,5 +53,13 @@ public class EnemyBehaviour : MonoBehaviour {
     private void drawRay() {
         var down = GroundDectation.TransformDirection(Vector3.down) * Distance;
         Debug.DrawRay(GroundDectation.position, down, Color.green);
+    }
+
+    public void EnemyHealth() {
+        destroyEnemy();
+    }
+
+    private void destroyEnemy() {
+        Destroy(this.gameObject);
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Trampoline
   - Bridge
+  - Water_Drop
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - PostProcessing
   - SunRay
   - Ground
-  - 
+  - Enemy
   - 
   - 
   - 

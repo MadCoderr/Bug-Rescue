@@ -3,6 +3,10 @@
     void playerHealth();
 }
 
+public interface IEnemyController {
+    void EnemyHealth();
+}
+
 public interface IBridgeController {
     void openBridge();
     void closeBridge();

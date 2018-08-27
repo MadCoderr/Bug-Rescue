@@ -38,7 +38,10 @@ public class RayInput : MonoBehaviour {
                     if (_trampolineController != null)
                         _trampolineController.activateTrampoline();
                 }
-                    
+                
+                else if (_hitInfo.collider.tag == "Water_Drop") {
+                    _hitInfo.collider.GetComponentInParent<LeafBehaviour>().activateParticle();
+                }
             }
         } 
         // if player release the button the time will reset
