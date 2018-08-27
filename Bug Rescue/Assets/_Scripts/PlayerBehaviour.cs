@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour, IPlayerController {
 
     public bool IS_MOVING = false;
-    public bool IS_RIGHT = false;
-    public bool IS_LEFT = false;
 
     [SerializeField]
     private float Speed = 3f;
@@ -18,7 +16,8 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     private IBridgeController _bridgeContorller;
     private Rigidbody _rbPlayer;
 
-    
+    private ILeafController _leafController;
+
     void Start () {
         _rbPlayer = GetComponent<Rigidbody>();
         _bridgeContorller = GameObject.Find("Example_Bridge").GetComponent<IBridgeController>();
@@ -61,23 +60,11 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     }
 
     private void checkMovement(float horizontal) {
-        if (horizontal > 0)
+        if (horizontal != 0)
         {
             IS_MOVING = true;
-            IS_RIGHT = true;
-            IS_LEFT = false;
-        }
-        else if (horizontal < 0)
-        {
-            IS_MOVING = true;
-            IS_RIGHT = false;
-            IS_LEFT = true;
-        }
-        else
-        {
+        } else {
             IS_MOVING = false;
-            IS_RIGHT = false;
-            IS_LEFT = false;
         }
 
     }
@@ -86,4 +73,17 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
         Camera.main.GetComponent<CameraFollow>().enabled = false; // just to make sure to disable this script so unity will not thrown any exception
         Destroy(this.gameObject);
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Left_Ref") {
+            _leafController = other.GetComponentInParent<ILeafController>();
+            _leafController.BendLeft();
+        }
+        else if (other.tag == "Right_Ref") {
+            _leafController = other.GetComponentInParent<ILeafController>();
+            _leafController.BendRight();
+        }
+    }
+
 }

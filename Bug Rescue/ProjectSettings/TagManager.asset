@@ -8,6 +8,8 @@ TagManager:
   - Bridge
   - Water_Drop
   - Enemy
+  - Left_Ref
+  - Right_Ref
   layers:
   - Default
   - TransparentFX

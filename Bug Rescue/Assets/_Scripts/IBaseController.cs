@@ -16,3 +16,9 @@ public interface ITrampolineController {
     void activateTrampoline();
     void disableTrampoline();
 }
+
+public interface ILeafController {
+    void BendRight();
+    void BendLeft();
+    void ActivateParticle();
+}

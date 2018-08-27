@@ -14,6 +14,7 @@ public class RayInput : MonoBehaviour {
     private RaycastHit _hitInfo;
     private IBridgeController _bridgeController;
     private ITrampolineController _trampolineController;
+    private ILeafController _leafController;
 
     private string _colliderTag = "";
 
@@ -40,7 +41,8 @@ public class RayInput : MonoBehaviour {
                 }
                 
                 else if (_hitInfo.collider.tag == "Water_Drop") {
-                    _hitInfo.collider.GetComponentInParent<LeafBehaviour>().activateParticle();
+                    _leafController = _hitInfo.collider.GetComponentInParent<ILeafController>();
+                    _leafController.ActivateParticle();
                 }
             }
         } 
