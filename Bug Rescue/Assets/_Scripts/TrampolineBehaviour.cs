@@ -49,7 +49,6 @@ public class TrampolineBehaviour : MonoBehaviour, ITrampolineController {
         {
             if (other.collider.tag == "Player")
             {
-                print("collide with player");
                 _playerController = other.gameObject.GetComponent<IPlayerController>();
                 _playerController.MoveUp();
             }

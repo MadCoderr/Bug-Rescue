@@ -13,27 +13,30 @@ public class EnemyBehaviour : MonoBehaviour {
     [SerializeField]
     private float Distance = 2f;
 
+    [SerializeField]
+    private LayerMask GroundMask;
+
     private bool _isMovingRight = true;
     private IPlayerController _playerController;
-	
+    private RaycastHit _hit;
+
 	void Update () {
         enemyPatrol();
 	}
 
     private void enemyPatrol() {
-        transform.Translate(-Vector3.right * Speed * Time.deltaTime);
+        var move = Vector3.left * Speed * Time.deltaTime;
+        transform.Translate(move);
+        drawRay();
 
         // if the ray cast that is emitting from GroundDectation object does not hit the ground(cube)
         // the player would rotate in opposite directoin
-        if (!Physics.Raycast(GroundDectation.position, Vector3.down, Distance))
-        {
-            if (_isMovingRight)
-            {
+        if (!Physics.Raycast(GroundDectation.position, Vector3.down, out _hit, Distance, GroundMask)) {
+            if (_isMovingRight) {
                 transform.eulerAngles = new Vector3(0, -180f, 0);
                 _isMovingRight = false;
             }
-            else
-            {
+            else {
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 _isMovingRight = true;
             }
@@ -46,5 +49,10 @@ public class EnemyBehaviour : MonoBehaviour {
             _playerController = other.collider.GetComponent<IPlayerController>();
             _playerController.playerHealth();
         }
+    }
+
+    private void drawRay() {
+        var down = GroundDectation.TransformDirection(Vector3.down) * Distance;
+        Debug.DrawRay(GroundDectation.position, down, Color.green);
     }
 }
