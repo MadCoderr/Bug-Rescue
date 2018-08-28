@@ -385,5 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointA: {fileID: 4639868971052990}
   PointB: {fileID: 4613767632402536}
+  Distance: 1
   SPEED: 3
   TargetObject: {fileID: 4676811929501676}
+  Rotation: 1

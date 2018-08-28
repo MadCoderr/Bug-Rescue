@@ -11,10 +11,11 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     [SerializeField]
     private float jumpHeight = 10f;
 
+    private Rigidbody _rbPlayer;
+    private Transform _tempTransform;
+
 
     private IBridgeController _bridgeContorller;
-    private Rigidbody _rbPlayer;
-
     private ILeafController _leafController;
 
     void Start () {
@@ -60,6 +61,22 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     private void destroyPlayer() {
         Camera.main.GetComponent<CameraFollow>().enabled = false; // just to make sure to disable this script so unity will not thrown any exception
         Destroy(this.gameObject);
+    }
+
+
+    private void OnCollisionEnter(Collision other) {
+        if (other.collider.tag == "Moving_Platform") {
+            _tempTransform = this.transform.parent;
+            this.transform.parent = other.collider.transform; 
+            print("enter platform  :)");
+        }
+    }
+
+    private void OnCollisionExit(Collision other) {
+        if (other.collider.tag == "Moving_Platform") {
+            print("exit platform :(");
+            this.transform.parent = _tempTransform;
+        }
     }
 
     private void OnTriggerStay(Collider other)

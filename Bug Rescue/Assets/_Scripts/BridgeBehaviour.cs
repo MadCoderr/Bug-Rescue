@@ -5,7 +5,7 @@ using UnityEngine;
 public class BridgeBehaviour : MonoBehaviour, IBridgeController {
 
     private float _time = 0.01f;
-    private float _maxTime = 2f;
+    private float _maxTime = 0.1f;
     private float _openingTime;
 
 
