@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour, IPlayerController {
 
-    public bool IS_MOVING = false;
 
     [SerializeField]
     private float Speed = 3f;
@@ -35,7 +34,6 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     // A funciton to define movement for player 
     private void playerMovement() {
         var horizontal = Input.GetAxis("Horizontal"); // gettting x-axis
-        checkMovement(horizontal);
 
         // this will let the player to move on x-axis
         _rbPlayer.velocity = new Vector3(-horizontal * Speed, _rbPlayer.velocity.y, 0);
@@ -57,16 +55,6 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     public void playerHealth()
     {
         destroyPlayer();
-    }
-
-    private void checkMovement(float horizontal) {
-        if (horizontal != 0)
-        {
-            IS_MOVING = true;
-        } else {
-            IS_MOVING = false;
-        }
-
     }
 
     private void destroyPlayer() {

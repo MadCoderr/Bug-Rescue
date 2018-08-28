@@ -7,39 +7,15 @@ public class EnemyBehaviour : MonoBehaviour, IEnemyController {
     [SerializeField]
     private float Speed = 3f;
 
-    [SerializeField]
-    private Transform GroundDectation;
-
-    [SerializeField]
-    private float Distance = 2f;
-
-    [SerializeField]
-    private LayerMask GroundMask;
-
-    private bool _isMovingRight = true;
     private IPlayerController _playerController;
+    private MovementBetweenPoints _movement;
 
-	void Update () {
-        enemyPatrol();
-	}
+    private void Start() {
+        _movement = GetComponent<MovementBetweenPoints>();
+    }
 
-    private void enemyPatrol() {
-        var move = Vector3.left * Speed * Time.deltaTime;
-        transform.Translate(move);
-        drawRay();
-
-        // if the ray cast that is emitting from GroundDectation object does not hit the ground(cube)
-        // the player would rotate in opposite directoin
-        if (!Physics.Raycast(GroundDectation.position, Vector3.down, Distance, GroundMask)) {
-            if (_isMovingRight) {
-                transform.eulerAngles = new Vector3(0, -180f, 0);
-                _isMovingRight = false;
-            }
-            else {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                _isMovingRight = true;
-            }
-        }
+    void Update () {
+        _movement.SPEED = Speed;
     }
 
     private void OnCollisionEnter(Collision other) {
@@ -50,10 +26,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemyController {
         }
     }
 
-    private void drawRay() {
-        var down = GroundDectation.TransformDirection(Vector3.down) * Distance;
-        Debug.DrawRay(GroundDectation.position, down, Color.green);
-    }
+
 
     public void EnemyHealth() {
         destroyEnemy();

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrampolineBehaviour : MonoBehaviour, ITrampolineController {
 
     [SerializeField]
-    private ParticleSystem Particle;
+    private GameObject ParticleSystem;
 
     private CapsuleCollider _collider;
 
@@ -32,7 +32,7 @@ public class TrampolineBehaviour : MonoBehaviour, ITrampolineController {
         if (_activateTime >= _maxTime) {
             _isActive = true;
             _collider.isTrigger = false;
-            Particle.gameObject.SetActive(true);
+            ParticleSystem.SetActive(true);
         }
     }
 
