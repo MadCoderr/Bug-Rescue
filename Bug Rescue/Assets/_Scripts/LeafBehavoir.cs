@@ -9,7 +9,7 @@ public class LeafBehavoir : MonoBehaviour, ILeafController {
     private ParticleSystem Particle;
 
     [SerializeField]
-    private Transform LeafPivot;
+	private Transform LeafPivot;
 
     [SerializeField]
     private float RotateSpeed = 5f;
@@ -20,7 +20,7 @@ public class LeafBehavoir : MonoBehaviour, ILeafController {
     }
 
     public void BendRight()
-    {
+	{
             LeafPivot.Rotate(0, 0, RotateSpeed * Time.deltaTime);
     }
 
