@@ -17,6 +17,7 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
 
     private IBridgeController _bridgeContorller;
     private ILeafController _leafController;
+    private IEnemyController _enemyController;
 
     void Start () {
         _rbPlayer = GetComponent<Rigidbody>();
@@ -70,6 +71,16 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
             this.transform.parent = other.collider.transform; 
             print("enter platform  :)");
         }
+
+        if (other.collider.tag == "Enemy") {
+            _enemyController = other.collider.GetComponent<IEnemyController>();
+            _enemyController.Damage(this.gameObject);
+        }
+
+        if (other.collider.tag == "Frog_Tongue") {
+            _tempTransform = this.transform.parent;
+            this.transform.parent = other.collider.transform.parent.gameObject.transform;
+        }
     }
 
     private void OnCollisionExit(Collision other) {
@@ -83,11 +94,11 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     {
         if (other.tag == "Left_Ref") {
             _leafController = other.GetComponentInParent<ILeafController>();
-            _leafController.BendLeft();
+            _leafController.BendUp();
         }
         else if (other.tag == "Right_Ref") {
             _leafController = other.GetComponentInParent<ILeafController>();
-            _leafController.BendRight();
+            _leafController.BendDown();
         }
     }
 

@@ -5,6 +5,8 @@ using UnityEngine;
 public class ParticleBehaviour : MonoBehaviour {
 
     private IEnemyController _enemyController;
+    private IStickContoller _stickController;
+
 
     private void OnParticleCollision(GameObject other) {
         if (other.tag == "Enemy") {
@@ -12,5 +14,11 @@ public class ParticleBehaviour : MonoBehaviour {
             _enemyController.EnemyHealth();
             gameObject.SetActive(false);
         }
+
+        if (other.tag == "Stick") {
+            _stickController = other.GetComponent<IStickContoller>();
+            _stickController.BurnTheStick();
+        }
     }
+
 }

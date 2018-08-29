@@ -55,7 +55,7 @@ GameObject:
   m_Layer: 0
   m_Name: Point B
   m_TagString: Untagged
-  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -70,7 +70,7 @@ GameObject:
   m_Layer: 0
   m_Name: Point A
   m_TagString: Untagged
-  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -252,7 +252,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1107195122165742}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.97, y: 5.56, z: 0}
+  m_LocalPosition: {x: -0.053265095, y: 0.74, z: 0.34761047}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4162581101438298}
@@ -748,7 +748,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1239,7 +1239,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 5
     enabled: 1
-    type: 18
+    type: 19
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -4194,7 +4194,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 2048
+      m_Bits: 6144
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

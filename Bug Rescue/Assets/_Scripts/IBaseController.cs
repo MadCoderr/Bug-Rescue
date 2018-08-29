@@ -5,6 +5,7 @@
 
 public interface IEnemyController {
     void EnemyHealth();
+    void Damage(object gameObject);
 }
 
 public interface IBridgeController {
@@ -18,7 +19,11 @@ public interface ITrampolineController {
 }
 
 public interface ILeafController {
-    void BendRight();
-    void BendLeft();
+    void BendDown();
+    void BendUp();
     void ActivateParticle();
+}
+
+public interface IStickContoller {
+    void BurnTheStick();
 }

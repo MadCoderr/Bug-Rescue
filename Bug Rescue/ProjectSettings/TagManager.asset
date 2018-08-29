@@ -11,6 +11,9 @@ TagManager:
   - Left_Ref
   - Right_Ref
   - Moving_Platform
+  - Frog_Tongue
+  - Stick
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -24,7 +27,7 @@ TagManager:
   - SunRay
   - Ground
   - Enemy
-  - 
+  - Stick
   - 
   - 
   - 

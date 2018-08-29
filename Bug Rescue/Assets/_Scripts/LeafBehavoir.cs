@@ -20,23 +20,20 @@ public class LeafBehavoir : MonoBehaviour, ILeafController {
     [SerializeField]
     private float RotateSpeed = 5f;
 
-    private float _maxRotation = 30f;
-    private bool _reachedToMax = false;
-    private bool _reachedToMin = false;
 
-    public void BendLeft()
+    public void BendUp()
     {
-        // 3.564867
-        print("distance: " + Vector3.Distance(transform.position, PointB.position));
-        if (Vector3.Distance(transform.position, PointB.position) >= 3.564867f) 
-            LeafPivot.Rotate(0, 0, -RotateSpeed * Time.deltaTime);
+        // print("distance: " + Vector3.Distance(transform.position, PointB.position));
+        //  if (Vector3.Distance(transform.position, PointB.position) >= 3.564867f) 
+        //      LeafPivot.transform.Rotate(0, 0, -RotateSpeed * Time.deltaTime);
+        LeafPivot.rotation = Quaternion.Slerp(LeafPivot.rotation, Quaternion.identity, Time.deltaTime);
     }
 
-    public void BendRight()
+    public void BendDown()
     {
        // print("distance: " + Vector3.Distance(transform.position, PointA.position));
         if (Vector3.Distance(transform.position, PointA.position) >= 3.53f)
-                 LeafPivot.Rotate(0, 0, RotateSpeed * Time.deltaTime);
+                 LeafPivot.transform.Rotate(0, 0, RotateSpeed * Time.deltaTime);
     }
 
     public void ActivateParticle()
