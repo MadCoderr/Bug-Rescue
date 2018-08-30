@@ -17,10 +17,6 @@ public class RayInput : MonoBehaviour {
     private ILeafController _leafController;
 
     private string _colliderTag = "";
-
-	void Start () {
-        _bridgeController = GameObject.Find("Example_Bridge").GetComponent<IBridgeController>();
-    }
 	
 	void Update () {
 		if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) {
@@ -31,6 +27,7 @@ public class RayInput : MonoBehaviour {
                 _colliderTag = _hitInfo.collider.tag;
 
                 if (_hitInfo.collider.tag == "Bridge") {
+                    _bridgeController = _hitInfo.collider.GetComponent<IBridgeController>();
                     _bridgeController.openBridge();
                 }
 

@@ -8,20 +8,18 @@ public class TrampolineBehaviour : MonoBehaviour, ITrampolineController {
     private GameObject ParticleSystem;
 
     private CapsuleCollider _collider;
+    private Animator _animator;
 
     private bool _isActive = false;
     private float _maxTime = 2f;
     private float _activateTime;
-
+    
     private IPlayerController _playerController;
 
     void Start () {
-        _collider = GetComponent<CapsuleCollider>();  
-	}
-	
-	
-	void Update () {
-		
+        _animator = GetComponent<Animator>();
+        _collider = GetComponent<CapsuleCollider>();
+        _collider.center = new Vector3(0, 9f, 0); 
 	}
 
     //this method, will be called whenever user is being pushing on trampoline
@@ -31,7 +29,9 @@ public class TrampolineBehaviour : MonoBehaviour, ITrampolineController {
         _activateTime += Time.deltaTime;
         if (_activateTime >= _maxTime) {
             _isActive = true;
+            _animator.SetTrigger("Open");
             _collider.isTrigger = false;
+            _collider.center = new Vector3(0, 7.83f, 0);
             ParticleSystem.SetActive(true);
         }
     }

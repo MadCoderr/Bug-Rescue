@@ -6,14 +6,18 @@ public class EnemyBehaviour : MonoBehaviour, IEnemyController {
 
 
     private IPlayerController _playerController;
+    private bool _isDead = false;
 
     public virtual void EnemyHealth() {
         destroyEnemy();
+        _isDead = true;
     }
 
     public virtual void Damage(object gameObject) {
-        _playerController = ((GameObject)gameObject).GetComponent<IPlayerController>();
-        _playerController.playerHealth();
+        if (!_isDead) {
+            _playerController = ((GameObject)gameObject).GetComponent<IPlayerController>();
+            _playerController.playerHealth();
+        }
     }
 
     private void destroyEnemy() {

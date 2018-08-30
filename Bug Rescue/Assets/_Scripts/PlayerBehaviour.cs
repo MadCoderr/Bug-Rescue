@@ -14,15 +14,12 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     private Rigidbody _rbPlayer;
     private Transform _tempTransform;
 
-
-    private IBridgeController _bridgeContorller;
     private ILeafController _leafController;
     private IEnemyController _enemyController;
     private IBugAnimContoller _bugAnimContoller;
 
     void Start () {
         _rbPlayer = GetComponent<Rigidbody>();
-        _bridgeContorller = GameObject.Find("Example_Bridge").GetComponent<IBridgeController>();
         _bugAnimContoller = GetComponent<IBugAnimContoller>();
 	}
 	
@@ -42,14 +39,6 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
 
         // this will let the player to move on x-axis
         _rbPlayer.velocity = new Vector3(-horizontal * Speed, _rbPlayer.velocity.y, 0);
-
-        // When user gives input of space We activate its script component to open the gate; (By default the gate is closed)
-        if (Input.GetKey(KeyCode.Space)) {
-            _bridgeContorller.openBridge();
-        }
-        else if (Input.GetKeyUp(KeyCode.Space)) {
-            _bridgeContorller.closeBridge();
-        }
     }
 
     public void MoveUp() {
