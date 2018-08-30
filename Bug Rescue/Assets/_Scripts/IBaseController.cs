@@ -27,3 +27,8 @@ public interface ILeafController {
 public interface IStickContoller {
     void BurnTheStick();
 }
+
+public interface IBugAnimContoller {
+    void IdleAndWalk(float move);
+    void Dying(bool check);
+}

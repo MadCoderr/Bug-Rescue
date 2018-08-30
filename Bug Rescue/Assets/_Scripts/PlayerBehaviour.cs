@@ -18,10 +18,12 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     private IBridgeController _bridgeContorller;
     private ILeafController _leafController;
     private IEnemyController _enemyController;
+    private IBugAnimContoller _bugAnimContoller;
 
     void Start () {
         _rbPlayer = GetComponent<Rigidbody>();
         _bridgeContorller = GameObject.Find("Example_Bridge").GetComponent<IBridgeController>();
+        _bugAnimContoller = GetComponent<IBugAnimContoller>();
 	}
 	
 	void Update () {
@@ -36,6 +38,7 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     // A funciton to define movement for player 
     private void playerMovement() {
         var horizontal = Input.GetAxis("Horizontal"); // gettting x-axis
+        _bugAnimContoller.IdleAndWalk(horizontal);
 
         // this will let the player to move on x-axis
         _rbPlayer.velocity = new Vector3(-horizontal * Speed, _rbPlayer.velocity.y, 0);
@@ -60,8 +63,9 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     }
 
     private void destroyPlayer() {
+        _bugAnimContoller.Dying(true);
         Camera.main.GetComponent<CameraFollow>().enabled = false; // just to make sure to disable this script so unity will not thrown any exception
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 2f);
     }
 
 

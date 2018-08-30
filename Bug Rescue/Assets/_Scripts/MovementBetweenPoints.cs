@@ -21,13 +21,26 @@ public class MovementBetweenPoints : MonoBehaviour {
     [SerializeField]
     private bool Rotation = false;
 
+    [SerializeField]
+    private float WaitTime;
+
+    private float _time;
     private bool _movingRight = true;
 
-	void Update () {
-        if (Rotation) {
-            moveAndRotate();
+    private void Start() {
+        _time = 0f;
+    }
+
+    void Update () {
+        if (_time <= 0) {
+            if (Rotation) {
+                moveAndRotate();
+            }
+            else {
+                move();
+            }
         } else {
-            move();
+            _time -= Time.deltaTime;
         }
     }
 
@@ -37,9 +50,11 @@ public class MovementBetweenPoints : MonoBehaviour {
 
         if (Vector3.Distance(TargetObject.transform.position, PointB.transform.position) < Distance) {
             TargetObject.eulerAngles = new Vector3(0, -180f, 0);
+            _time = WaitTime;
         }
         else if (Vector3.Distance(TargetObject.transform.position, PointA.transform.position) < Distance) {
             TargetObject.eulerAngles = new Vector3(0, 0, 0);
+            _time = WaitTime;
         }
     }
 
@@ -54,9 +69,11 @@ public class MovementBetweenPoints : MonoBehaviour {
 
         if (Vector3.Distance(TargetObject.transform.position, PointB.transform.position) < Distance) {
             _movingRight = false;
+            _time = WaitTime;
         }
         else if (Vector3.Distance(TargetObject.transform.position, PointA.transform.position) < Distance) {
             _movingRight = true;
+            _time = WaitTime;
         }
 
     }

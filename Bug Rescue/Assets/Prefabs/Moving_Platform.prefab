@@ -201,3 +201,4 @@ MonoBehaviour:
   SPEED: 3
   TargetObject: {fileID: 4316481378450472}
   Rotation: 0
+  WaitTime: 2

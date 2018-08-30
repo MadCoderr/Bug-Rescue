@@ -12,6 +12,7 @@ public class StickBehaivour : MonoBehaviour, IStickContoller {
 
     private Animator _animator;
     private BoxCollider _collider;
+    private float _checkScale;
 
     private void Start() {
         _animator = GetComponent<Animator>();
