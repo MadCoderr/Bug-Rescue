@@ -14,7 +14,7 @@ public class TrampolineBehaviour : MonoBehaviour, ITrampolineController {
     private Animator _animator;
 
     private bool _isActive = false;
-    private float _maxTime = 2f;
+    private float _maxTime = 0.5f;
     private float _activateTime;
     
     private IPlayerController _playerController;
