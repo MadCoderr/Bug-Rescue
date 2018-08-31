@@ -80,7 +80,7 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
         if (other.collider.tag == "Moving_Platform") {
             print("exit platform :(");
             this.transform.parent = _tempTransform;
-        }
+		}
     }
 
     private void OnTriggerStay(Collider other)
