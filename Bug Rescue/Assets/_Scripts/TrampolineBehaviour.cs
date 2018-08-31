@@ -7,6 +7,9 @@ public class TrampolineBehaviour : MonoBehaviour, ITrampolineController {
     [SerializeField]
     private GameObject ParticleSystem;
 
+    [SerializeField]
+    private bool IsWalkable = false;
+
     private CapsuleCollider _collider;
     private Animator _animator;
 
@@ -28,11 +31,15 @@ public class TrampolineBehaviour : MonoBehaviour, ITrampolineController {
     {
         _activateTime += Time.deltaTime;
         if (_activateTime >= _maxTime) {
-            _isActive = true;
+
+            if (!IsWalkable) {
+                _isActive = true;
+                ParticleSystem.SetActive(true);
+            }
             _animator.SetTrigger("Open");
             _collider.isTrigger = false;
             _collider.center = new Vector3(0, 7.83f, 0);
-            ParticleSystem.SetActive(true);
+            
         }
     }
 
