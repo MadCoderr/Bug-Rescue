@@ -15,7 +15,6 @@ public class RayInput : MonoBehaviour {
     private GameObject Light;
 
     private RaycastHit _hitInfo;
-    private IBridgeController _bridgeController;
     private ITrampolineController _trampolineController;
     private ILeafController _leafController;
 
@@ -31,12 +30,7 @@ public class RayInput : MonoBehaviour {
 
                 _colliderTag = _hitInfo.collider.tag;
 
-                if (_hitInfo.collider.tag == "Bridge") {
-                    _bridgeController = _hitInfo.collider.GetComponent<IBridgeController>();
-                    _bridgeController.openBridge();
-                }
-
-                else if (_hitInfo.collider.tag == "Trampoline") {
+                 if (_hitInfo.collider.tag == "Trampoline") {
                     _trampolineController = _hitInfo.collider.GetComponent<ITrampolineController>();
                     if (_trampolineController != null)
                         _trampolineController.activateTrampoline();
@@ -53,11 +47,11 @@ public class RayInput : MonoBehaviour {
         // if player release the button the time will reset
         else if (Input.GetMouseButtonUp(0)) {
            if (_colliderTag.Length > 0) {
-                if (_colliderTag == "Bridge")
-                    _bridgeController.closeBridge();
-
-                else if (_colliderTag == "Trampoline")
+                 if (_colliderTag == "Trampoline")
                     _trampolineController.disableTrampoline();
+
+                else if (_colliderTag == "Water_Drop")
+                    _leafController.DeactivateParticle();
             }
             _count = 0;
             destroyLight();

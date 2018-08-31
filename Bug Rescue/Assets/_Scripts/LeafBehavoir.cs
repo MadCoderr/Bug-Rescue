@@ -18,22 +18,26 @@ public class LeafBehavoir : MonoBehaviour, ILeafController {
 	private Transform LeafPivot;
 
     [SerializeField]
+    private Transform LeafEnd;
+
+    [SerializeField]
     private float RotateSpeed = 5f;
 
+    private Vector3 pos;
 
-    public void BendUp()
-    {
-        // print("distance: " + Vector3.Distance(transform.position, PointB.position));
-        //  if (Vector3.Distance(transform.position, PointB.position) >= 3.564867f) 
-        //      LeafPivot.transform.Rotate(0, 0, -RotateSpeed * Time.deltaTime);
-        LeafPivot.rotation = Quaternion.Slerp(LeafPivot.rotation, Quaternion.identity, Time.deltaTime);
+    private void Start() {
+        pos = LeafPivot.eulerAngles;
     }
 
-    public void BendDown()
-    {
-       // print("distance: " + Vector3.Distance(transform.position, PointA.position));
-        if (Vector3.Distance(transform.position, PointA.position) >= 3.53f)
-                 LeafPivot.transform.Rotate(0, 0, RotateSpeed * Time.deltaTime);
+    public void BendUp() {
+        LeafPivot.rotation = Quaternion.Slerp(LeafPivot.rotation, Quaternion.Euler(pos), Time.deltaTime);
+    }
+
+    public void BendDown() {
+        if (Vector3.Distance(LeafEnd.position, PointA.position) >= 1f) {
+            LeafPivot.transform.Rotate(-RotateSpeed * Time.deltaTime, 0, 0);
+        }
+  
     }
 
     public void ActivateParticle()
@@ -41,5 +45,8 @@ public class LeafBehavoir : MonoBehaviour, ILeafController {
         Particle.gameObject.SetActive(true);
     }
 
-
+    public void DeactivateParticle()
+    {
+        Particle.gameObject.SetActive(false);
+    }
 }

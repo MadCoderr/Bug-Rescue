@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 4726798151257066}
   - component: {fileID: 95091988838522514}
   m_Layer: 0
-  m_Name: Grass_with_water_drop_New 1
+  m_Name: Grass_with_water_drop_New_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

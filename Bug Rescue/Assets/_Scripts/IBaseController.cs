@@ -8,11 +8,6 @@ public interface IEnemyController {
     void Damage(object gameObject);
 }
 
-public interface IBridgeController {
-    void openBridge();
-    void closeBridge();
-}
-
 public interface ITrampolineController {
     void activateTrampoline();
     void disableTrampoline();
@@ -22,6 +17,7 @@ public interface ILeafController {
     void BendDown();
     void BendUp();
     void ActivateParticle();
+    void DeactivateParticle();
 }
 
 public interface IStickContoller {
