@@ -11,13 +11,18 @@ public class RayInput : MonoBehaviour {
     [SerializeField]
     private float RayLength;
 
+    [SerializeField]
+    private GameObject Light;
+
     private RaycastHit _hitInfo;
     private IBridgeController _bridgeController;
     private ITrampolineController _trampolineController;
     private ILeafController _leafController;
 
     private string _colliderTag = "";
-	
+    private int _count = 0;
+    private GameObject _clone;
+
 	void Update () {
 		if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -41,6 +46,8 @@ public class RayInput : MonoBehaviour {
                     _leafController = _hitInfo.collider.GetComponentInParent<ILeafController>();
                     _leafController.ActivateParticle();
                 }
+                instantiateLight(_hitInfo.transform.parent.position);
+
             }
         } 
         // if player release the button the time will reset
@@ -52,6 +59,20 @@ public class RayInput : MonoBehaviour {
                 else if (_colliderTag == "Trampoline")
                     _trampolineController.disableTrampoline();
             }
+            _count = 0;
+            destroyLight();
         }
 	}
+
+    private void instantiateLight(Vector3 position) { 
+        if (_count == 0) {
+            _clone = Instantiate(Light, position, Quaternion.Euler(0, 0, -30f)) as GameObject;
+            print("position: " + position);
+            _count = 1;
+        }
+    }
+
+    private void destroyLight() {
+         Destroy(_clone, 0.5f);
+    }
 }
