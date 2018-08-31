@@ -14,6 +14,9 @@ public class RayInput : MonoBehaviour {
     [SerializeField]
     private GameObject Light;
 
+    [SerializeField]
+    private AudioClip LightClip;
+
     private RaycastHit _hitInfo;
     private ITrampolineController _trampolineController;
     private ILeafController _leafController;
@@ -61,7 +64,7 @@ public class RayInput : MonoBehaviour {
     private void instantiateLight(Vector3 position) { 
         if (_count == 0) {
             _clone = Instantiate(Light, position, Quaternion.Euler(0, 0, -30f)) as GameObject;
-            print("position: " + position);
+            AudioSource.PlayClipAtPoint(LightClip, position);
             _count = 1;
         }
     }

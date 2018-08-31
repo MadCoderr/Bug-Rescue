@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, IEnemyController {
 
+    [SerializeField]
+    private AudioClip DeathClip;
+
     private IPlayerController _playerController;
     private bool _isDead = false;
 
@@ -20,6 +23,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemyController {
     }
 
     private void destroyEnemy() {
+        AudioSource.PlayClipAtPoint(DeathClip, transform.position);
         Destroy(this.gameObject, 2.2f);
     }
 

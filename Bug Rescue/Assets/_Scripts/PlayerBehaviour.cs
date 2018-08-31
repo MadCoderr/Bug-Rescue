@@ -14,6 +14,12 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     [SerializeField]
     private AudioClip PickUpClip;
 
+    [SerializeField]
+    private AudioClip JumpClip;
+
+    [SerializeField]
+    private AudioClip DeathClip;
+
     private Rigidbody _rbPlayer;
     private Transform _tempTransform;
 
@@ -47,6 +53,7 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     }
 
     public void MoveUp() {
+        AudioSource.PlayClipAtPoint(JumpClip, transform.position);
         _rbPlayer.AddForce(0, jumpHeight, 0, ForceMode.Impulse);
     }
 
@@ -57,8 +64,14 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     }
 
     private void destroyPlayer() {
+        GetComponent<CapsuleCollider>().isTrigger = true;
+        _rbPlayer.useGravity = false;
+
         _bugAnimContoller.Dying(true);
+
+        AudioSource.PlayClipAtPoint(DeathClip, transform.position);
         Camera.main.GetComponent<CameraFollow>().enabled = false; // just to make sure to disable this script so unity will not thrown any exception
+
         Destroy(this.gameObject, 2f);
     }
 

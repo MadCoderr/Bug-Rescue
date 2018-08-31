@@ -1251,7 +1251,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3
   jumpHeight: 10
-  PickUpClip: {fileID: 8300000, guid: 335e7c3f36891b34593c0c2b1be58771, type: 3}
+  PickUpClip: {fileID: 8300000, guid: 2edf41c047aa041488848a5d3636b890, type: 3}
+  JumpClip: {fileID: 8300000, guid: 9126985a02c94cd4ba1f2eeab4ea86bd, type: 3}
+  DeathClip: {fileID: 8300000, guid: e66f36e2bc011cc438cce04cc5d8ac66, type: 3}
 --- !u!114 &114923328743403990
 MonoBehaviour:
   m_ObjectHideFlags: 1

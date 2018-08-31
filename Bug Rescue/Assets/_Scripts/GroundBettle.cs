@@ -19,17 +19,14 @@ public class GroundBettle : EnemyBehaviour {
         _collider = GetComponent<CapsuleCollider>();
     }
 
-    public void Update() {
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Dying")) {
-           // showGraveStone();
-        }
-    }
-
     public override void EnemyHealth() {
         base.EnemyHealth();
+
         _collider.isTrigger = true;
         _ref.enabled = false;
+
         _animator.SetTrigger("Dead");
+
         showGraveStone();
     }
 
