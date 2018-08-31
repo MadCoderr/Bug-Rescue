@@ -1498,7 +1498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d5ff7bc2cfbfe47b35af587e00b5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathClip: {fileID: 8300000, guid: e05f0ba52d781a541b6c1aab2bd526bd, type: 3}
+  DeathClip: {fileID: 8300000, guid: e66f36e2bc011cc438cce04cc5d8ac66, type: 3}
   GraveStrone: {fileID: 1083610364476140, guid: fa2b9218c5cd97841a3560161dd9a99c,
     type: 2}
 --- !u!114 &114903974965843062

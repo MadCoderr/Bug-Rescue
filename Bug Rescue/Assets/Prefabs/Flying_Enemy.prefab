@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4551945c66b8d47b6fb4979896dd72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathClip: {fileID: 8300000, guid: e05f0ba52d781a541b6c1aab2bd526bd, type: 3}
+  DeathClip: {fileID: 8300000, guid: e66f36e2bc011cc438cce04cc5d8ac66, type: 3}
 --- !u!136 &136920526706619584
 CapsuleCollider:
   m_ObjectHideFlags: 1
