@@ -50,6 +50,13 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
 
         // this will let the player to move on x-axis
         _rbPlayer.velocity = new Vector3(-horizontal * Speed, _rbPlayer.velocity.y, 0);
+
+        if (Mathf.Abs(_rbPlayer.velocity.y) > 2f) {
+            _bugAnimContoller.InAir(true);
+        } else {
+            _bugAnimContoller.InAir(false);
+        }
+
     }
 
     public void MoveUp() {

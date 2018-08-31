@@ -23,4 +23,8 @@ public class BugAnimation : MonoBehaviour, IBugAnimContoller {
     public void Dying(bool check) {
         _animator.SetTrigger("Bug_Dead");
     }
+
+    public void InAir(bool check) {
+        _animator.SetBool("In_Air", check);
+    }
 }

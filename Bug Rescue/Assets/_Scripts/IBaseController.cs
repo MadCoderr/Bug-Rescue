@@ -27,6 +27,7 @@ public interface IStickContoller {
 public interface IBugAnimContoller {
     void IdleAndWalk(float move);
     void Dying(bool check);
+    void InAir(bool check);
 }
 
 public interface IUIController {
