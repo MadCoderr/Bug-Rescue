@@ -14,6 +14,7 @@ TagManager:
   - Frog_Tongue
   - Stick
   - Ground
+  - Collectable
   layers:
   - Default
   - TransparentFX

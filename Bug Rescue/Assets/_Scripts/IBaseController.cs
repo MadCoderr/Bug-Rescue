@@ -32,3 +32,7 @@ public interface IBugAnimContoller {
     void IdleAndWalk(float move);
     void Dying(bool check);
 }
+
+public interface IUIController {
+    void Collectable();
+}

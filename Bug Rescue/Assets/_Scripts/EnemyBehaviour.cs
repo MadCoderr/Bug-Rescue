@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, IEnemyController {
 
-
     private IPlayerController _playerController;
     private bool _isDead = false;
 
@@ -21,7 +20,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemyController {
     }
 
     private void destroyEnemy() {
-        Destroy(this.gameObject, 2f);
+        Destroy(this.gameObject, 2.2f);
     }
 
     

@@ -11,16 +11,21 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     [SerializeField]
     private float jumpHeight = 10f;
 
+    [SerializeField]
+    private AudioClip PickUpClip;
+
     private Rigidbody _rbPlayer;
     private Transform _tempTransform;
 
     private ILeafController _leafController;
     private IEnemyController _enemyController;
     private IBugAnimContoller _bugAnimContoller;
+    private IUIController _uiController;
 
     void Start () {
         _rbPlayer = GetComponent<Rigidbody>();
         _bugAnimContoller = GetComponent<IBugAnimContoller>();
+        _uiController = GameObject.Find("UI_Manager").GetComponent<IUIController>();
 	}
 	
 	void Update () {
@@ -81,6 +86,14 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
             print("exit platform :(");
             this.transform.parent = _tempTransform;
 		}
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "Collectable") {
+            _uiController.Collectable();
+            AudioSource.PlayClipAtPoint(PickUpClip, other.transform.position);
+            Destroy(other.gameObject);
+        }
     }
 
     private void OnTriggerStay(Collider other)
