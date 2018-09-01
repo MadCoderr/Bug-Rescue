@@ -14,12 +14,15 @@ public class UIManager : MonoBehaviour, IUIController {
     [SerializeField]
     private Button ResumeBtn;
 
-    private int _count = 0;
+    public static int CountScore = 0;
 
+    private void Start() {
+        ScoreText.text = CountScore.ToString();
+    }
 
     public void Collectable() {
-        _count++;
-		ScoreText.text = _count.ToString ();
+        CountScore++;
+		ScoreText.text = CountScore.ToString ();
     }
 
     public void ShowPauseMenu() {
