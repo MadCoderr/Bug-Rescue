@@ -9,6 +9,11 @@ public class Gamemanager : MonoBehaviour {
 	public Image img;
 	public float tim;
 
+	void Awake()
+	{
+		DontDestroyOnLoad (this.gameObject);
+	}
+
 	public void SceneLoad(int a)
 	{
 		//img.color += new Color (0, 0, 0, 1);
