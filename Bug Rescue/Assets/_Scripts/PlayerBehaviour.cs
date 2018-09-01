@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour, IPlayerController {
 
@@ -79,6 +80,8 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
 
         AudioSource.PlayClipAtPoint(DeathClip, transform.position);
         Camera.main.GetComponent<CameraFollow>().enabled = false; // just to make sure to disable this script so unity will not thrown any exception
+
+        SceneManager.LoadScene(0);
 
         Destroy(this.gameObject, 2f);
     }

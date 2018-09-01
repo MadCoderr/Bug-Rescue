@@ -25,4 +25,8 @@ public class Gamemanager : MonoBehaviour {
 	{
 		Application.Quit ();
 	}
+
+    public static void LoadMenu() {
+        SceneManager.LoadScene(0);
+    }
 }
