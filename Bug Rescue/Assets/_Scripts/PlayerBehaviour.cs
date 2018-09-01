@@ -68,6 +68,7 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     public void playerHealth()
     {
         destroyPlayer();
+
     }
 
     private void destroyPlayer() {
