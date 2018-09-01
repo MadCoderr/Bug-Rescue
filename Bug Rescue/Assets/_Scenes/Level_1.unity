@@ -6554,7 +6554,7 @@ Prefab:
         type: 2}
       propertyPath: FollowTarget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1491312114}
     - target: {fileID: 20415887762114000, guid: 6faaaabd664b6a44db82edb77cbf8475,
         type: 2}
       propertyPath: m_BackGroundColor.r
@@ -7766,6 +7766,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53426becadc3d2439287721d05dddda, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &1491312114 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4921040161978960, guid: b53426becadc3d2439287721d05dddda,
+    type: 2}
+  m_PrefabInternal: {fileID: 1491312113}
 --- !u!4 &1493081807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4823695783527902, guid: 57bb7ca74eab5a441b4b7c786a890632,
