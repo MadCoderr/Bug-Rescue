@@ -13,4 +13,9 @@ public class EndGame : MonoBehaviour {
 		}
 	}
 
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
