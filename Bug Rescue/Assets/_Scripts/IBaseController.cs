@@ -33,6 +33,9 @@ public interface IBugAnimContoller {
 
 public interface IUIController {
     void Collectable();
+    void ShowPauseMenu();
+    void HidePauseMenu();
+    void GameOver();
 }
 
 public interface IGameController {

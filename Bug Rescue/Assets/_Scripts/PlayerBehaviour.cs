@@ -86,6 +86,8 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
         AudioSource.PlayClipAtPoint(DeathClip, transform.position);
         Camera.main.GetComponent<CameraFollow>().enabled = false; // just to make sure to disable this script so unity will not thrown any exception
 
+        _uiController.GameOver();
+
         destroyPlayer();
     }
 

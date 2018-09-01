@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour, IUIController {
     [SerializeField]
     private Canvas PauseMenu;
 
+    [SerializeField]
+    private Button ResumeBtn;
+
     private int _count = 0;
 
 
@@ -20,11 +23,15 @@ public class UIManager : MonoBehaviour, IUIController {
     }
 
     public void ShowPauseMenu() {
-        print("called");
         PauseMenu.gameObject.SetActive(true);
     }
 
     public void HidePauseMenu() {
         PauseMenu.gameObject.SetActive(false);
+    }
+
+    public void GameOver() {
+        ResumeBtn.interactable = false;
+        ShowPauseMenu();
     }
 }

@@ -524,9 +524,20 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 114982651248976048, guid: 0f42bceb05dbe5d4c90299e529d4c659,
+        type: 2}
+      propertyPath: ResumeBtn
+      value: 
+      objectReference: {fileID: 106793201}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f42bceb05dbe5d4c90299e529d4c659, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &106793201 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114758980017547422, guid: 0f42bceb05dbe5d4c90299e529d4c659,
+    type: 2}
+  m_PrefabInternal: {fileID: 106793200}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &107111745
 Prefab:
   m_ObjectHideFlags: 0
