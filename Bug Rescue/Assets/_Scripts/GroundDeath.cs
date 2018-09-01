@@ -5,17 +5,12 @@ using UnityEngine;
 public class GroundDeath : MonoBehaviour {
 
 	private GameObject player;
-
-	void Start()
-	{
-		player = GameObject.FindWithTag ("Player");
-	}
-
-	void OnCollisionEnter(Collision col)
-	{
-		if (col.gameObject.tag == "Player") 
-		{
-			player.GetComponent<PlayerBehaviour> ().playerHealth ();
+    private IPlayerController _playerController;
+    
+	void OnCollisionEnter(Collision other) {
+		if (other.collider.tag == "Player") {
+            _playerController = other.gameObject.GetComponent<IPlayerController>();
+            _playerController.PlayerDead();
 		}
 	}
 }

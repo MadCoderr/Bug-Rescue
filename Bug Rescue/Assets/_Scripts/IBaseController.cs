@@ -1,6 +1,7 @@
 ﻿public interface IPlayerController {
     void MoveUp();
     void playerHealth();
+    void PlayerDead();
 }
 
 public interface IEnemyController {
@@ -32,4 +33,11 @@ public interface IBugAnimContoller {
 
 public interface IUIController {
     void Collectable();
+}
+
+public interface IGameController {
+    void StartNextScene();
+    void QuitGame();
+    void RestartLevel();
+    void OpenMainMenu();
 }

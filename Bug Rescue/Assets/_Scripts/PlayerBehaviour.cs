@@ -27,12 +27,16 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     private ILeafController _leafController;
     private IEnemyController _enemyController;
     private IBugAnimContoller _bugAnimContoller;
+
     private IUIController _uiController;
+    private IGameController _gameController;
 
     void Start () {
         _rbPlayer = GetComponent<Rigidbody>();
         _bugAnimContoller = GetComponent<IBugAnimContoller>();
+
         _uiController = GameObject.Find("UI_Manager").GetComponent<IUIController>();
+        _gameController = GameObject.Find("GameManager").GetComponent<IGameController>();
 	}
 	
 	void Update () {
@@ -66,13 +70,12 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     }
 
 
-    public void playerHealth()
-    {
+    public void playerHealth() {
         destroyPlayer();
 
     }
 
-    private void destroyPlayer() {
+    public void PlayerDead() {
         GetComponent<CapsuleCollider>().isTrigger = true;
         _rbPlayer.useGravity = false;
 
@@ -81,8 +84,11 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
         AudioSource.PlayClipAtPoint(DeathClip, transform.position);
         Camera.main.GetComponent<CameraFollow>().enabled = false; // just to make sure to disable this script so unity will not thrown any exception
 
-        SceneManager.LoadScene(0);
+        destroyPlayer();
+    }
 
+    private void destroyPlayer() {
+       
         Destroy(this.gameObject, 2f);
     }
 
@@ -98,10 +104,6 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
             _enemyController = other.collider.GetComponent<IEnemyController>();
             _enemyController.Damage(this.gameObject);
         }
-
-        if (other.collider.tag == "Frog_Tongue") {
-			_enemyController.Damage(this.gameObject);
-        }
     }
 
     private void OnCollisionExit(Collision other) {
@@ -116,6 +118,10 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
             _uiController.Collectable();
             AudioSource.PlayClipAtPoint(PickUpClip, other.transform.position);
             Destroy(other.gameObject);
+        }
+
+        if (other.tag == "Finish") {
+            _gameController.StartNextScene();
         }
     }
 

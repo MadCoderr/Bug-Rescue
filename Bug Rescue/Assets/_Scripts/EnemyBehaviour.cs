@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemyController {
     public virtual void Damage(object gameObject) {
         if (!_isDead) {
             _playerController = ((GameObject)gameObject).GetComponent<IPlayerController>();
-            _playerController.playerHealth();
+            _playerController.PlayerDead();
         }
     }
 
