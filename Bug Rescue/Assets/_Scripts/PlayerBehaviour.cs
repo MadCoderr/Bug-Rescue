@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour, IPlayerController {
-
-
+    
     [SerializeField]
     private float Speed = 3f;
     
@@ -22,7 +21,11 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     private AudioClip DeathClip;
 
     private Rigidbody _rbPlayer;
-    private Transform _tempTransform;
+
+    [SerializeField]
+    private Transform ParentTransform;
+
+    private int _parentCount = 0;
 
     private ILeafController _leafController;
     private IEnemyController _enemyController;
@@ -43,8 +46,7 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
 		
 	}
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         playerMovement();
     }
 
@@ -92,14 +94,13 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
         Destroy(this.gameObject, 2f);
     }
 
-
     private void OnCollisionEnter(Collision other) {
-        if (other.collider.tag == "Moving_Platform") {
-            _tempTransform = this.transform.parent;
-            this.transform.parent = other.collider.transform; 
-            print("enter platform  :)");
+        if (other.collider.tag == "Moving_Platform")
+        {
+            print("enter platform  :)" + other.collider.name);
+            this.transform.parent = other.collider.transform;
+            _parentCount++;        
         }
-
         if (other.collider.tag == "Enemy") {
             _enemyController = other.collider.GetComponent<IEnemyController>();
             _enemyController.Damage(this.gameObject);
@@ -109,7 +110,12 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
     private void OnCollisionExit(Collision other) {
         if (other.collider.tag == "Moving_Platform") {
             print("exit platform :(");
-            this.transform.parent = _tempTransform;
+            if (_parentCount == 1) {
+                this.transform.parent = ParentTransform;
+                _parentCount = 0;
+            }
+            else
+                _parentCount = 1;
 		}
     }
 

@@ -51,7 +51,7 @@ public class MovementBetweenPoints : MonoBehaviour {
                 moveAndRotate();
             }
             else {
-                move();
+                   move();
             }
         } else {
             _time -= Time.deltaTime;

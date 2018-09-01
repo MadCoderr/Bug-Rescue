@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour, IUIController {
     }
 
     public void ShowPauseMenu() {
+        print("called");
         PauseMenu.gameObject.SetActive(true);
     }
 

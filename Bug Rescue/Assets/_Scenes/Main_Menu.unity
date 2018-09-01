@@ -177,7 +177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &219864058
 GameObject:
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 273161047}
+      - m_Target: {fileID: 450800799}
         m_MethodName: StartNextScene
         m_Mode: 1
         m_Arguments:
@@ -377,12 +377,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 227228298}
   m_CullTransparentMesh: 0
---- !u!114 &273161047 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114799358260067082, guid: fb1798b145870944984f4186febd9c7d,
-    type: 2}
-  m_PrefabInternal: {fileID: 450800798}
-  m_Script: {fileID: 11500000, guid: 7ad4d1d2f3b23dd408b77d9f88c2efb6, type: 3}
 --- !u!1001 &400694810
 Prefab:
   m_ObjectHideFlags: 0
@@ -479,6 +473,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1798b145870944984f4186febd9c7d, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &450800799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114568786369104322, guid: fb1798b145870944984f4186febd9c7d,
+    type: 2}
+  m_PrefabInternal: {fileID: 450800798}
+  m_Script: {fileID: 11500000, guid: 7ad4d1d2f3b23dd408b77d9f88c2efb6, type: 3}
 --- !u!1 &1314135767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1558019052557176, guid: 6faaaabd664b6a44db82edb77cbf8475,
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 273161047}
+      - m_Target: {fileID: 450800799}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
