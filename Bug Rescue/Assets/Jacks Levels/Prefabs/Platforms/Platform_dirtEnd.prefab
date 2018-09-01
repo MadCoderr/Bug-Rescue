@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33752492348180884}
   - component: {fileID: 23651703246943596}
   - component: {fileID: 65855205118044250}
-  m_Layer: 0
+  - component: {fileID: 114456117218990656}
+  m_Layer: 11
   m_Name: Platform_dirtEnd
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +97,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.137068, y: 12.332358, z: 9.722754}
   m_Center: {x: 0.00007200241, y: -11.779107, z: -2.5668747}
+--- !u!114 &114456117218990656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232664146310244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a10a12d0a419a499218d8a31d1ead1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

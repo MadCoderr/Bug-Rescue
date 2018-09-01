@@ -96,8 +96,7 @@ public class PlayerBehaviour : MonoBehaviour, IPlayerController {
         }
 
         if (other.collider.tag == "Frog_Tongue") {
-            _tempTransform = this.transform.parent;
-            this.transform.parent = other.collider.transform.parent.gameObject.transform;
+			_enemyController.Damage(this.gameObject);
         }
     }
 
